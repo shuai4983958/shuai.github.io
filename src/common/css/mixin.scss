@@ -1,0 +1,186 @@
+//transform px to rem;
+$designWidth:750;
+/* @function px2rem( $px ){
+	//320*50/750/20
+	@return $px*750/$designWidth/20 + rem;
+} */
+
+@function px2rem( $px ){
+  @return $px*320/$designWidth/20 + rem;
+}
+//字体大小，颜色
+@mixin fontColor($size, $color){
+	font-size: $size;
+	color: $color;
+}
+@mixin backsrc($url) { 
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	-webkit-background-size:100% 100%;
+}
+//宽高
+@mixin wh($width, $height){
+	width: $width;
+	height: $height;
+}
+%inlineblockP{
+	font-size:0;
+	 
+}
+%inlineblock{
+	display: inline-block;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+%center {
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	margin:auto;
+	position: absolute;
+}
+%fontweight100{
+	font-weight:100;
+}
+%flexbox{
+
+	display: -webkit-box; //old
+	display: -moz-box; //old
+	display: -ms-flexbox; // ie
+	display: -webkit-flex; //new
+	display: flex; //new
+	
+}
+%justifyContent{
+	  justify-content: space-between;
+	  -webkit-justify-content:space-between;
+	  -moz-justify-content: space-between;
+	  -ms-justify-content: space-between;
+	  -webkit-box-pack: space-between;//旧版flex布局
+// justify-content: flex-start | flex-end | center | space-between | space-around;
+// /*主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布*/
+// 	  box-pack: start | end | center | justify;
+// /*主轴对齐：左对齐（默认） | 右对齐 | 居中对齐 | 左右对齐*/
+// 兼容写法新版语法的 space-around 是不可用的：
+}
+@mixin justifyContent($value,$oldvalue){
+	justify-content: $value;
+	  -webkit-justify-content:$value;
+	  -moz-justify-content: $value;
+	  -ms-justify-content: $value;
+	  -webkit-box-pack: $oldvalue;//旧版flex布局
+	  box-pack: $oldvalue;
+
+}
+@mixin alignItem($value,$oldvalue){
+// 	box-align: start | end | center | baseline | stretch;
+// /*交叉轴对齐：顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满*/
+// align-items: flex-start | flex-end | center | baseline | stretch;
+// /*交叉轴对齐方式：顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐*/
+	align-items: $value;
+	-webkit-align-items:$value;
+	-moz-align-items: $value;
+	-ms-align-items: $value;
+	-webkit-box-align: $oldvalue;//旧版flex布局
+	box-align:$oldvalue;
+}
+%text-center{
+	text-align:center;
+}
+@mixin flex( $value ){
+	-webkit-box-flex: $value;
+	-moz-box-flex: $value;
+	-ms-flex: $value;
+	-webkit-flex: $value;
+	flex: $value;
+}
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin borderShdow($h-shadow,$v-shadow,$blur,$spread,$color,$set){
+	  -moz-box-shadow:$h-shadow $v-shadow $blur $spread,$color $set;          /*firefox*/
+       -webkit-box-shadow:$h-shadow $v-shadow $blur $spread,$color $set;      /*webkit*/
+        box-shadow:$h-shadow $v-shadow $blur $spread,$color $set;                   /*opera或ie9*/
+
+}
+//定位左右居中顶部冒出
+@mixin posTopCenter {  
+	position: absolute;
+	left: 50%;
+	top:0;
+    transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+}
+//定位左右居中
+@mixin posXcenter {  
+	position: absolute;
+	left: 50%;
+  	 transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    -webkit-transform:translate(-50%);
+}
+//定位上下居中
+@mixin posYcenter {  
+	position: absolute;
+	top: 50%;
+     transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform:translateY(-50%);
+}
+%box-center{
+	display: -webkit-box;      
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+%box-v-center{
+	display: -webkit-box; 
+	-webkit-box-align: center;
+}
+%box-h-center{
+	display: -webkit-box; 
+	-webkit-box-pack: center;
+}
+
+%flex-center{
+	align-items:center;
+}
+
+%abs{
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+%fixed{
+	position:fixed;
+}
+ %absolute{
+ 	position:absolute;
+ }
+%whap{
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+%abscenter{
+	left:0;
+	right:0;
+	margin:auto;
+	position:absolute;
+}
